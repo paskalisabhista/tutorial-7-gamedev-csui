@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/AreaTrigger.gd" type="Script" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.206078, 0.138819, 0.202756 )
+
+[node name="AreaTrigger" type="Area"]
+transform = Transform( 19.3965, 0, 0, 0, 1.30842, 0, 0, 0, 19.3965, 0, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="CSGMesh" type="CSGMesh" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_AreaTrigger_body_entered"]

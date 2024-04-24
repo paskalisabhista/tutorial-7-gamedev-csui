@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/ObjLamp.tscn" type="PackedScene" id=1]
+
+[node name="World 1" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.233612, 0.183449, -0.111328 )
+
+[node name="Lamp" parent="." instance=ExtResource( 1 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -1.59347, 0.600388, 30.6086 )
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+use_collision = true
+
+[node name="Room 1" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0148087, 3.68662, 0.00653458 )
+use_collision = true
+invert_faces = true
+width = 27.4335
+height = 7.4051
+depth = 15.2974
+
+[node name="CSGBox" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14302, 4.53862, 21.4946 )
+invert_faces = true
+width = 12.8242
+height = 9.11404
+depth = 27.8072
+
+[node name="CSGBox2" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04276, -1.89745, 16.9019 )
+width = 15.7664
+height = 3.7655
+depth = 14.1118
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29639, -0.947176, 12.5032 )
+use_collision = true
+
+[node name="CSGBox2" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.30299, -0.947, 17.0827 )
+use_collision = true
+
+[node name="CSGBox3" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33946, -0.947, 21.7416 )
+use_collision = true
