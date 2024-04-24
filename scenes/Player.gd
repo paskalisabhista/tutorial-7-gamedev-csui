@@ -14,6 +14,9 @@ onready var camera = $Head/Camera
 var velocity = Vector3()
 var camera_x_rotation = 0
 
+const SPRINT_MULTIPLIER = 1.5
+const CROUCH_MULTIPLIER = 0.5
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -33,6 +36,7 @@ func _physics_process(delta):
 	var head_basis = head.get_global_transform().basis
 	
 	var movement_vector = Vector3()
+	
 	if Input.is_action_pressed("movement_forward"):
 		movement_vector -= head_basis.z
 	if Input.is_action_pressed("movement_backward"):
@@ -43,9 +47,14 @@ func _physics_process(delta):
 		movement_vector += head_basis.x
 	movement_vector = movement_vector.normalized()
 	
+	if Input.is_action_pressed("ui_sprint"):
+		movement_vector *= SPRINT_MULTIPLIER
+	elif Input.is_action_pressed("ui_crouching"):
+		movement_vector *= CROUCH_MULTIPLIER
 	velocity = velocity.linear_interpolate(movement_vector * speed, acceleration * delta)
 	velocity.y -= gravity
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y += jump_power
 		
+	
 	velocity = move_and_slide(velocity, Vector3.UP)
